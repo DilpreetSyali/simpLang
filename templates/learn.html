@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn SimpLang</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff8d4;
+      color: #333;
+      padding: 40px;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    h1 {
+      color: #340da7;
+      margin-top: 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #333;
+      border-bottom: 2px solid #ddd;
+    }
+
+    code {
+      background: #eee;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="/static/Logo.png" alt="SimpLang Logo"> &nbsp;
+     <h1> Happy Coding!</h1>
+  </header>
+
+  <p>Welcome to the SimpLang learning page! Below you'll find syntax rules, grammar insights, and examples.</p><br>
+ 
+
+  <h2>📌 Variable Declaration</h2>
+  <p>Declare variables using <code>VAR</code> keyword.</p>
+  <pre>
+VAR x = 10
+VAR name = "SimpLang"
+  </pre>
+
+  <h2>📌 Arithmetic Operations</h2>
+  <p>Supported operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code></p>
+  <pre>
+VAR result = 2 + 3 * 4
+VAR square = 2 ^ 4  # 2 to the power of 4
+  </pre>
+
+  <h2>📌 Comparison Operators</h2>
+  <p>Used in conditionals or logical checks:</p>
+  <pre>
+==   !=   >   <   >=   <=
+
+IF x > 5 THEN
+  PRINT("Greater")
+END
+  </pre>
+
+  <h2>📌 Logical Operators</h2>
+  <pre>
+AND   OR   NOT
+
+IF a > b AND b > 0 THEN
+  PRINT("True")
+END
+  </pre>
+
+  <h2>📌 Conditional Statements</h2>
+  <p>Simplang supports nested if-else:</p>
+  <pre>
+IF x > 5 THEN
+  PRINT("Big")
+ELSE
+  PRINT("Small")
+END
+  </pre>
+
+  <h2>📌 Loops</h2>
+  <p><strong>FOR loop:</strong> from start to end with optional step</p>
+  <pre>
+FOR i = 1 TO 5 THEN
+  PRINT(i)
+END
+
+FOR j = 10 TO 1 STEP -2 THEN
+  PRINT(j)
+END
+  </pre>
+
+  <p><strong>WHILE loop:</strong> repeat while condition is true</p>
+  <pre>
+VAR i = 0
+WHILE i < 5 THEN
+  PRINT(i)
+  VAR i = i + 1
+END
+  </pre>
+
+  <h2>📌 Functions</h2>
+  <p>Define and call functions with <code>FUN</code> keyword:</p>
+  <pre>
+FUN square(n) -> n * n
+PRINT(square(5))  # Output: 25
+  </pre>
+
+  <h2>📌 Strings</h2>
+  <pre>
+VAR text = "Hello, SimpLang!"
+PRINT(text)
+  </pre>
+
+  <h2>📌 Lists</h2>
+  <p>Lists can be created and concatenated:</p>
+  <pre>
+VAR nums = [1, 2, 3]
+VAR updated = nums + [4]
+PRINT(updated)
+  </pre>
+
+  <h2>📌 Constants</h2>
+  <p>You can use built-in constants like:</p>
+  <pre>
+PRINT(MATH_PI)
+  </pre>
+
+  <h2>📘 Behind the Scenes: grammar.txt Insights</h2>
+  <p>The <code>grammar.txt</code> file defines the tokens and syntax structure (BNF-style). For example:</p>
+  <ul>
+    <li><code>VAR</code> is defined as a keyword for variable assignment.</li>
+    <li><code>FOR</code> and <code>WHILE</code> are loop tokens expecting specific structures.</li>
+    <li>Operators like <code>+</code>, <code>-</code> are part of arithmetic grammar rules.</li>
+    <li>Custom rules define how statements are parsed into an abstract syntax tree (AST).</li>
+  </ul>
+
+  <p>Understanding grammar.txt helps you extend SimpLang with features like:</p>
+  <ul>
+    <li>Function overloading</li>
+    <li>Try/Catch blocks</li>
+    <li>Break/Continue in loops</li>
+  </ul>
+
+</body>
+</html>

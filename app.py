@@ -10,11 +10,9 @@ def index():
     return render_template('index.html')
 
 @app.route('/run', methods=['POST'])
-@app.route('/run', methods=['POST'])
 def run_code():
-    from time import sleep  # optional: simulate buffering delay
     data = request.get_json()
-    code = data.get('code', '')
+    code = data.get('code', '').replace('\r', '')  # 🛠️ Fix here
 
     # Capture print() output
     old_stdout = sys.stdout
@@ -30,16 +28,18 @@ def run_code():
 
     printed_output = mystdout.getvalue().strip()
 
-    # ✅ 1. Show runtime errors
+    # Handle SimpLang runtime error
     if error:
         if hasattr(error, "as_string"):
             return jsonify({'output': error.as_string(), 'error': True})
         else:
             return jsonify({'output': f'[Unhandled Error] {str(error)}', 'error': True})
 
-    # ✅ 2. Only print what's explicitly printed
     return jsonify({'output': printed_output, 'error': False})
 
+@app.route('/learn')
+def learn():
+    return render_template('learn.html')  # You create this file with syntax tips
 
 if __name__ == '__main__':
     app.run(debug=True)
