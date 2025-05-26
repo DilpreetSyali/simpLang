@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SimpLang Web IDE</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0e4b4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      background: #fff8d4;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 60px;
+      margin-right: 15px;
+    }
+    h1 {
+      color: #333;
+    }
+    .container {
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      font-family: monospace;
+      font-size: 16px;
+    }
+    pre {
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      white-space: pre-wrap;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Spinner styles */
+    #spinner {
+      display: none;
+      border: 4px solid #ccc;
+      border-top: 4px solid #4CAF50;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="static/Logo.png" alt="SimpLang Logo">
+  </header>
+
+  <div class="container">
+    <textarea id="code" placeholder="Write your SimpLang code here..."></textarea><br>
+    <button onclick="runCode()">Run</button>
+    <div id="spinner"></div>
+    <h3>Output:</h3>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    async function runCode() {
+      const code = document.getElementById('code').value;
+      const outputElem = document.getElementById('output');
+      const spinner = document.getElementById('spinner');
+
+      // Clear previous output and show spinner
+      outputElem.textContent = '';
+      spinner.style.display = 'inline-block';
+
+      try {
+        const response = await fetch('/run', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code })
+        });
+
+        const result = await response.json();
+        outputElem.textContent = result.output || '(no output)';
+      } catch (err) {
+        outputElem.textContent = '[Client Error] ' + err.message;
+      } finally {
+        spinner.style.display = 'none'; // Hide spinner after done
+      }
+    }
+  </script>
+</body>
+</html>

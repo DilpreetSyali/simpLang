@@ -1,15 +1,9 @@
-import simpLang 
-from simpLang import run
+import simpLang
 
 while True:
-    text = input("simpLang > ")
-    if text.strip() == "":
-        continue
-
-    node, error = run('<stdin>', text)
+    text = input('simpLang > ')
+    result, error = simpLang.run('<stdin>', text)
 
     if error:
         print(error.as_string())
-    else:
-        print("Parse Tree:")
-        print(node)
+    # Do NOT print result here — PRINT() already handled that
