@@ -1,8 +1,8 @@
-import simpLang
+import parserr
 
 while True:
     text = input('simpLang > ')
-    result, error = simpLang.run('<stdin>', text)
+    result, error = parserr.run('<stdin>', text)
 
     if error:
         print(error.as_string())
