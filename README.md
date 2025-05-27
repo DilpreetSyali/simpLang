@@ -29,11 +29,11 @@ SimpLang serves both as an educational tool for those new to programming languag
 - *Core Language Constructs:* Variables, arithmetic, conditionals, loops, functions, lists, strings, constants.
 - *Simple & Intuitive Syntax:* Designed for ease of use and learning.
 - 
-[o1](https://github.com/user-attachments/assets/ece9c4e3-01e8-434c-a9a4-869405988ff9)
+![o1](https://github.com/user-attachments/assets/ece9c4e3-01e8-434c-a9a4-869405988ff9)
 
-[o2](https://github.com/user-attachments/assets/5a80c57c-0d79-4bd6-b0a3-035fd96583ec)
+![o2](https://github.com/user-attachments/assets/5a80c57c-0d79-4bd6-b0a3-035fd96583ec)
 
-[o3](https://github.com/user-attachments/assets/d0d1b24c-99f7-4ae3-aad6-0915d752e4ce)
+![o3](https://github.com/user-attachments/assets/d0d1b24c-99f7-4ae3-aad6-0915d752e4ce)
 
 ---
 
